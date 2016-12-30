@@ -7,11 +7,11 @@ var Menu = {
 	view: function(ctrl){
 		return m("nav",[
 			m("span",{class: "identity"}, ctrl.identity),
-			m("span", {class: "menu"},[
-				m("a", "MIJN COLLECTIE"),
-				m("a", "ZOEK MEETLATTEN"),
-				m("i",{class: "material-icons"},"search")
-			])
+			//m("span", {class: "menu"},[
+			//	m("a", "MIJN COLLECTIE"),
+			//	m("a", "ZOEK MEETLATTEN"),
+			//	m("i",{class: "material-icons"},"search")
+			//])
 
 		]);
 	}
@@ -68,10 +68,13 @@ var Graph = {
 	controller: function(id){
 		return {
 			getHistory: function(){
-				return model.history().scores.filter(function(s){
-					return s.indicator_id === id;
-				});
-
+				console.log(model.history());
+				if(model.history().scores.length > 0){
+					return model.history().scores.filter(function(s){
+						return s.indicator_id === id;
+					});
+				}
+				return [];
 			}
 		};
 	},
@@ -157,7 +160,7 @@ var NewCard = {
 			m("div",{},"Formuleer in één zin een element wat uitdrukking geeft aan jouw gelukkig zijn tijdens je werk:"),
 			m("div", {}, [
 				m("span",{class: "matewaarin"},"De mate waarin:"),
-				m("textarea",{class: "title", onchange: ctrl.onchange}, ctrl.getvalue())
+				m("textarea",{autofocus: "true", class: "title", onchange: ctrl.onchange}, ctrl.getvalue())
 			]),
 			m("button",{onclick: ctrl.submit},"toevoegen")
 		]);

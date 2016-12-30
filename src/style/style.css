@@ -36,7 +36,7 @@ i {
 }
 
 .page {
-	width: 300px;
+	width: 360px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 100px;
@@ -48,11 +48,13 @@ i {
 
 .card {
 	margin: 10px;
-	width: 300px;
+	width: 340px;
 	margin-bottom: 50px;
 	box-sizing: border-box;
-	padding-top: 20px;
-	border-top: 0.5px solid #AAAAAA;
+	padding: 20px;
+	border: 0.5px solid #AAAAAA;
+	box-shadow: 0px 1px 5px #AAAAAA;
+	border-radius: 7px;
 	float: left;
 }
 
@@ -86,6 +88,6 @@ textarea {
 	font-family: 'Nunito Sans', sans-serif;
 	border-style: none;
 	border-color: Transparent;
-	width: 300px;
+	width: 290px;
 	height: 200px;
 }
