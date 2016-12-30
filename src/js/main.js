@@ -69,7 +69,7 @@ var Graph = {
 		return {
 			getHistory: function(){
 				console.log(model.history());
-				if(model.history().scores.length > 0){
+				if(model.history().scores){
 					return model.history().scores.filter(function(s){
 						return s.indicator_id === id;
 					});
