@@ -4,68 +4,10 @@ body {
 	font-family: 'Nunito Sans', sans-serif;
 }
 
-nav {
-	box-sizing: border-box;
-	height: 70px;
-	width: 100%;
-	border-bottom: 0.5px solid #DDDDDD;
-	box-shadow: 0px 1px 5px #AAAAAA;
-	position: fixed;
-	top: 0px;
-	background-color: #fff;
-	line-height: 70px;
-	padding-left: 20px;
-	padding-right: 20px;
-}
-
-nav .identity {
-
-}
-nav .menu {
-	float: right;
-}
-
-nav a {
-	margin-right: 30px;
-}
-
-i {
-	display: inline-block;
-	vertical-align: middle;
-	color: #ff5050;
-}
-
 .page {
-	width: 360px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 100px;
-}
-
-.card_list {
-
-}
-
-.card {
-	margin: 10px;
-	width: 340px;
-	margin-bottom: 50px;
-	box-sizing: border-box;
-	padding: 20px;
-	border: 0.5px solid #AAAAAA;
-	box-shadow: 0px 1px 5px #AAAAAA;
-	border-radius: 7px;
-	float: left;
-}
-
-.card .title {
-	font-size: 24pt;
-	font-weight: 700;
-}
-
-.card .matewaarin {
-	font-size: 24pt;
-	font-weight: 200;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 .card .graph {
