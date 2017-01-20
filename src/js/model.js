@@ -30,6 +30,7 @@ if(model.my_cards() === null){
 model.select_card = function(indicator){
 	model.my_cards(model.my_cards().concat([indicator.id]));
 	localStorage.setItem("my_cards", JSON.stringify(model.my_cards()));
+	GET("/indicators").then(model.indicators);
 	model.get_myindicators();
 };
 

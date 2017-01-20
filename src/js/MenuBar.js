@@ -10,9 +10,12 @@ var MenuBar = (function(){
 			"line-height": "70px",
 			"padding-left": "20px",
 			"padding-right": "0px",
+			"position": "fixed",
+			"z-index": "9000",
 
 			//styling
 			"background-color": "#E32527",
+
 			"color": "#fff",
 			"box-shadow": "0px 1px 5px #AAAAAA",
 		}),
@@ -22,11 +25,12 @@ var MenuBar = (function(){
 		icon: s.cl({
 			"vertical-align": "middle",
 			"text-align": "center",
-			"line-height": "66px",
-			"width": "70px"
+			"line-height": "64px",
+			"width": "70px",
+			"border-bottom": "4px solid #E32527"
 		}),
 		selected: s.cl({
-			"border-bottom": "4px solid white"
+			"border-bottom": "4px solid white!important"
 		})
 	};
 
