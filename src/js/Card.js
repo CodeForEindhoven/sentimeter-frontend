@@ -27,7 +27,8 @@ var Card = (function(){
 		bookmark: s.cl({
 			"position": "absolute",
 			"right": "10px",
-			"top": "10px"
+			"top": "10px",
+			"cursor": "pointer"
 		})
 	};
 

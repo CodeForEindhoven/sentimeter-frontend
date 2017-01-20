@@ -35,8 +35,10 @@ model.select_card = function(indicator){
 };
 
 model.unselect_card = function(indicator){
-	var index = model.my_cards().findIndex(function(i){return i.id === indicator.id;});
-	model.my_cards(model.my_cards().splice(index,1));
+	var index = model.my_cards().findIndex(function(i){return i === indicator.id;});
+	var c = model.my_cards();
+	c.splice(index,1);
+	model.my_cards(c);
 	localStorage.setItem("my_cards", JSON.stringify(model.my_cards()));
 	model.get_myindicators();
 };

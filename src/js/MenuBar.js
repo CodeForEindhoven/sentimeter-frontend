@@ -27,7 +27,8 @@ var MenuBar = (function(){
 			"text-align": "center",
 			"line-height": "64px",
 			"width": "70px",
-			"border-bottom": "4px solid #E32527"
+			"border-bottom": "4px solid #E32527",
+			"cursor": "pointer"
 		}),
 		selected: s.cl({
 			"border-bottom": "4px solid white!important"
