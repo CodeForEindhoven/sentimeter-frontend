@@ -51,22 +51,36 @@ model.get_myindicators = function(){
 	model.my_cards().map(function(id, count){
 		state++;
 		GET("/indicator/"+id).then(function(card){
-			cardlist[count] = card;
-			state--;
-			if(state === 0) {
-				model.my_indicators(cardlist);
-				//m.endComputation();
-			}
+			GET("/history/"+id+"/"+model.handshake().identity_id).then(function(history){
+				card.history = history;
+				cardlist[count] = card;
+				state--;
+				if(state === 0) {
+					model.my_indicators(cardlist);
+					//m.endComputation();
+				}
+			});
 		});
 	});
 };
-model.get_myindicators();
+
+
+model.score = function(id, score){
+	POST("/score", {
+		"indicator_id": id,
+		"session_id": model.handshake().session_id,
+		"score": score
+	}).then(function(){
+		model.get_myindicators();
+	});
+};
 
 POST("/handshake", model.handshake)
 	.then(model.handshake)
 	.then(function(handshake){
 		localStorage.setItem("identity_id", handshake.identity_id);
+		model.get_myindicators();
 	});
 
 GET("/indicators").then(model.indicators);
-GET("/history/"+model.handshake().identity_id).then(model.history);
+//GET("/history/"+model.handshake().identity_id).then(model.history);

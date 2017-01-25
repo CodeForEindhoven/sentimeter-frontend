@@ -53,8 +53,10 @@ var ValueSelector = (function(){
 	};
 
 	return {
-		controller: function(indicator){
-			var position = m.prop(0.5);
+		controller: function(id, history){
+			var value = 5;
+			if(history) value = history[history.length-1].score;
+			var position = m.prop(value/10);
 			var element = m.prop();
 			var width = m.prop();
 			var left = m.prop();
@@ -73,23 +75,20 @@ var ValueSelector = (function(){
 				m.redraw();
 			};
 
-			window.addEventListener("mouseup", function(){
+			var onend = function(){
 				if(down()===true){
 					window.removeEventListener('mousemove', ondrag ,false);
-					down(false);
-					position(Math.round((rel()/width())*10)/10);
-					m.redraw();
-				}
-			}, false);
-
-			window.addEventListener("touchend", function(){
-				if(down()===true){
 					window.removeEventListener('touchmove', ontouch ,false);
 					down(false);
-					position(Math.round((rel()/width())*10)/10);
+					var value = Math.round((rel()/width())*10);
+					position(value/10);
+					model.score(id, value);
 					m.redraw();
 				}
-			}, false);
+			};
+
+			window.addEventListener("mouseup", onend, false);
+			window.addEventListener("touchend", onend, false);
 
 			return {
 				down: down,
@@ -109,8 +108,7 @@ var ValueSelector = (function(){
 		},
 		view: function(ctrl, indicator){
 			return m("div",{
-					class: s.parent,
-					onmousemove: ctrl.onmousemove,
+					class: s.parent
 				},[
 					m("div", {
 						class: s.rails,

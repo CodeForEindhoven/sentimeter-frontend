@@ -49,7 +49,8 @@ var DetailedCard = (function(){
 					}, "delete"),
 					m("span",{class: s.demate},"De mate waarin "),
 					m("span",{class: s.waarin}, indicator.title),
-					m.component(ValueSelector)
+					m.component(ChartCmp, indicator.history.scores),
+					m.component(ValueSelector, indicator.id, indicator.history.scores)
 				])
 			]);
 		}
