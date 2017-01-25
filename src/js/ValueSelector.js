@@ -30,7 +30,9 @@ var ValueSelector = (function(){
 			"transition": "all 0.2s cubic-bezier(.2,.58,.23,2) ",
 			"text-align": "center",
 			"line-height": "35px",
-			"cursor": "pointer"
+			"cursor": "pointer",
+			"touch-callout": "none",                /* prevent callout to copy image, etc when tap to hold */
+			"user-select": "none",
 		},{
 			":active" : {
 				"box-shadow": "0px 3px 2px #AAAAAA",
@@ -65,7 +67,7 @@ var ValueSelector = (function(){
 			};
 
 			var ontouch = function(e){
-				console.log(e);
+				e.preventDefault();
 				var rel = e.changedTouches[0].clientX - element().parentElement.offsetLeft;
 				position((rel/width()));
 				m.redraw();
@@ -73,6 +75,10 @@ var ValueSelector = (function(){
 
 			window.addEventListener("mouseup", function(){
 				window.removeEventListener('mousemove', ondrag ,false);
+			}, false);
+
+			window.addEventListener("touchend", function(){
+				window.removeEventListener('touchmove', ontouch ,false);
 			}, false);
 
 			return {
@@ -84,6 +90,7 @@ var ValueSelector = (function(){
 					e.setAttribute("style", "margin-left:"+(width()*position()-35)+"px");
 				},
 				onmousedown: function(e){
+					e.preventDefault();
 					window.addEventListener("mousemove", ondrag, false);
 					window.addEventListener("touchmove", ontouch, false);
 				},
