@@ -1,7 +1,7 @@
 var DetailedCard = (function(){
 
-	var style = {
-		parent: s.cl({
+	var s ={
+		parent: b.cl({
 			//shape
 			"box-sizing": "border-box",
 			"width": "100%",
@@ -16,15 +16,15 @@ var DetailedCard = (function(){
 			"margin-bottom": "20px",
 			"position": "relative",
 		}),
-		demate: s.cl({
+		demate: b.cl({
 			"font-size": "24pt",
 			"font-weight": "700",
 		}),
-		waarin: s.cl({
+		waarin: b.cl({
 			"font-size": "24pt",
 			"font-weight": "200",
 		}),
-		bookmark: s.cl({
+		bookmark: b.cl({
 			"position": "absolute",
 			"right": "10px",
 			"top": "10px",
@@ -41,14 +41,15 @@ var DetailedCard = (function(){
 			};
 		},
 		view: function(ctrl, indicator){
-			return m("div", {class: style.parent}, [
+			return m("div", {class: s.parent}, [
 				m("div",[
 					m("i", {
-						class: style.bookmark+"material-icons",
+						class: s.bookmark+"material-icons",
 						onclick: ctrl.onclick
 					}, "delete"),
-					m("span",{class: style.demate},"De mate waarin "),
-					m("span",{class: style.waarin}, indicator.title),
+					m("span",{class: s.demate},"De mate waarin "),
+					m("span",{class: s.waarin}, indicator.title),
+					m.component(ValueSelector)
 				])
 			]);
 		}

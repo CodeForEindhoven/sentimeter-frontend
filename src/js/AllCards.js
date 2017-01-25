@@ -1,6 +1,6 @@
 var AllCards = (function(){
 
-	var style = {
+	var s ={
 
 	};
 

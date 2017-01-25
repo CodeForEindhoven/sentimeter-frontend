@@ -1,7 +1,7 @@
 var HoverButton = (function(){
 
-	var style = {
-		main: s.cl({
+	var s ={
+		main: b.cl({
 			"width": "50px",
 			"height": "50px",
 			"border-radius": "25px",
@@ -18,8 +18,16 @@ var HoverButton = (function(){
 			"line-height": "48px",
 
 			"cursor": "pointer",
+
+			"transition": "all 0.2s ease"
+		},{
+			":active" : {
+				"box-shadow": "0px 0px 2px #AAAAAA",
+				"bottom": "18px",
+				"background-color": "#e56061"
+			}
 		}),
-		icon: s.cl({
+		icon: b.cl({
 			"vertical-align": "middle"
 		})
 	};
@@ -33,10 +41,10 @@ var HoverButton = (function(){
 		},
 		view: function(ctrl, options){
 			return m("div",{
-				class: style.main,
+				class: s.main,
 				onclick: options.onclick
 			},[
-				m("i", {class: "material-icons "+style.icon}, options.icon)
+				m("i", {class: "material-icons "+s.icon}, options.icon)
 			]);
 		}
 	};
