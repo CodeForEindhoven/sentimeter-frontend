@@ -33,13 +33,12 @@ var ValueSelector = (function(){
 			"cursor": "pointer",
 			"touch-callout": "none",                /* prevent callout to copy image, etc when tap to hold */
 			"user-select": "none",
-		},{
-			":active" : {
-				"box-shadow": "0px 3px 2px #AAAAAA",
-				"font-size": "25px",
-				"height": "70px",
-				"margin-top": "-46px",
-			}
+		}),
+		down: b.cl({
+			"box-shadow": "0px 3px 2px #AAAAAA!important",
+			"font-size": "25px!important",
+			"height": "70px!important",
+			"margin-top": "-46px!important",
 		}),
 		label: b.cl({
 			"vertical-align": "middle",
@@ -59,38 +58,50 @@ var ValueSelector = (function(){
 			var element = m.prop();
 			var width = m.prop();
 			var left = m.prop();
-
+			var down = m.prop(false);
+			var rel = m.prop();
 			var ondrag = function(e){
-				var rel = e.clientX - element().parentElement.offsetLeft;
-				position((rel/width()));
+				rel(e.clientX - element().parentElement.offsetLeft);
+				position((rel()/width()));
 				m.redraw();
 			};
 
 			var ontouch = function(e){
 				e.preventDefault();
-				var rel = e.changedTouches[0].clientX - element().parentElement.offsetLeft;
-				position((rel/width()));
+				rel(e.changedTouches[0].clientX - element().parentElement.offsetLeft);
+				position((rel()/width()));
 				m.redraw();
 			};
 
 			window.addEventListener("mouseup", function(){
-				window.removeEventListener('mousemove', ondrag ,false);
+				if(down()===true){
+					window.removeEventListener('mousemove', ondrag ,false);
+					down(false);
+					position(Math.round((rel()/width())*10)/10);
+					m.redraw();
+				}
 			}, false);
 
 			window.addEventListener("touchend", function(){
-				window.removeEventListener('touchmove', ontouch ,false);
+				if(down()===true){
+					window.removeEventListener('touchmove', ontouch ,false);
+					down(false);
+					position(Math.round((rel()/width())*10)/10);
+					m.redraw();
+				}
 			}, false);
 
 			return {
+				down: down,
 				position: position,
 				config: function(e){
-
 					element(e);
 					width(e.parentElement.offsetWidth);
 					e.setAttribute("style", "margin-left:"+(width()*position()-35)+"px");
 				},
 				onmousedown: function(e){
 					e.preventDefault();
+					down(true);
 					window.addEventListener("mousemove", ondrag, false);
 					window.addEventListener("touchmove", ontouch, false);
 				},
@@ -105,7 +116,7 @@ var ValueSelector = (function(){
 						class: s.rails,
 					}, [
 						m("div", {
-							class: s.slider,
+							class: s.slider+(ctrl.down()?s.down:""),
 							config: ctrl.config,
 							onmousedown: ctrl.onmousedown,
 							ontouchstart: ctrl.onmousedown
