@@ -22,10 +22,12 @@ var ChartCmp = (function(){
 			};
 		},
 		view: function(ctrl, history){
-			var start =  new Date(history[0].timestamp).getTime();
-			var length = new Date(history[history.length-1].timestamp).getTime()-start;
+
 
 			if(history){
+				var start =  new Date(history[0].timestamp).getTime();
+				var length = new Date(history[history.length-1].timestamp).getTime()-start;
+				
 				return m("div", {class: s.parent}, history.map(function(s){
 					var time = new Date(s.timestamp).getTime();
 					var x = ((time-start)/length)*80+10;
