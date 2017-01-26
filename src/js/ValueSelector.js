@@ -63,22 +63,22 @@ var ValueSelector = (function(){
 			var down = m.prop(false);
 			var rel = m.prop();
 			var ondrag = function(e){
-				rel(e.clientX - element().parentElement.offsetLeft);
-				position((rel()/width()));
-				m.redraw();
-			};
+				var x = e.clientX;
+				if(!x){x = e.changedTouches[0].clientX;}
 
-			var ontouch = function(e){
-				e.preventDefault();
-				rel(e.changedTouches[0].clientX - element().parentElement.offsetLeft);
-				position((rel()/width()));
+				rel(x - element().parentElement.offsetLeft);
+
+				var p = (rel()/width());
+				if(p<0.1){p=0.1;}
+				if(p>1){p=1;}
+				position(p);
 				m.redraw();
 			};
 
 			var onend = function(){
 				if(down()===true){
 					window.removeEventListener('mousemove', ondrag ,false);
-					window.removeEventListener('touchmove', ontouch ,false);
+					window.removeEventListener('touchmove', ondrag ,false);
 					down(false);
 					var value = Math.round((rel()/width())*10);
 					position(value/10);
@@ -102,7 +102,7 @@ var ValueSelector = (function(){
 					e.preventDefault();
 					down(true);
 					window.addEventListener("mousemove", ondrag, false);
-					window.addEventListener("touchmove", ontouch, false);
+					window.addEventListener("touchmove", ondrag, false);
 				},
 			};
 		},

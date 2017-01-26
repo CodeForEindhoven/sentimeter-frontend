@@ -28,6 +28,7 @@ var AddCards = (function(){
 				},
 				config: function(e){
 					e.focus();
+					window.scrollTo(0, 0);
 				}
 			};
 		},
@@ -38,7 +39,6 @@ var AddCards = (function(){
 					m("span",{class: s.demate},"De mate waarin:"),
 					m("textarea",{autofocus: "true", config: ctrl.config, class: s.textarea, onchange: ctrl.onchange}, ctrl.getvalue())
 				]),
-				//m("button",{onclick: ctrl.submit},"toevoegen")
 			]);
 		}
 	};
