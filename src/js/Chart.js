@@ -26,10 +26,10 @@ var ChartCmp = (function(){
 					context.lineWidth = 1;
 					context.strokeStyle = '#cccccc';
 
-					for(var i=0; i<1; i+=0.1){
+					for(var i=0; i<0.9; i+=0.1){
 						context.beginPath();
-						context.moveTo(0, e.height*(i*0.8+0.1));
-						context.lineTo(e.width, e.height*(i*0.8+0.1));
+						context.moveTo(0, e.height*(i*0.9+0.1));
+						context.lineTo(e.width, e.height*(i*0.9+0.1));
 						context.stroke();
 					}
 
