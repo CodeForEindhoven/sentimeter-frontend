@@ -54,11 +54,15 @@ var MenuBar = (function(){
 					m("i", {
 						class: (ctrl.status()===0?s.selected:"")+s.icon+"material-icons",
 						onclick: ctrl.get_onclick(0)
-					}, "collections_bookmark"),
+					}, "account_box"),
 					m("i", {
 						class: (ctrl.status()===1?s.selected:"")+s.icon+"material-icons",
 						onclick: ctrl.get_onclick(1)
 					}, "library_books"),
+					m("i", {
+						class: (ctrl.status()===3?s.selected:"")+s.icon+"material-icons",
+						onclick: ctrl.get_onclick(3)
+					}, "local_post_office"),
 				])
 			]);
 		}
