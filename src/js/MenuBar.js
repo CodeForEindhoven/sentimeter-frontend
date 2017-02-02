@@ -62,7 +62,7 @@ var MenuBar = (function(){
 					m("i", {
 						class: (ctrl.status()===3?s.selected:"")+s.icon+"material-icons",
 						onclick: ctrl.get_onclick(3)
-					}, "local_post_office"),
+					}, "chat_bubble_outline"),
 				])
 			]);
 		}
