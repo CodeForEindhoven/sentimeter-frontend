@@ -54,15 +54,19 @@ var MenuBar = (function(){
 					m("i", {
 						class: (ctrl.status()===0?s.selected:"")+s.icon+"material-icons",
 						onclick: ctrl.get_onclick(0)
-					}, "account_box"),
+					}, "person"),
 					m("i", {
 						class: (ctrl.status()===1?s.selected:"")+s.icon+"material-icons",
 						onclick: ctrl.get_onclick(1)
-					}, "library_books"),
+					}, "people"),
 					m("i", {
 						class: (ctrl.status()===3?s.selected:"")+s.icon+"material-icons",
 						onclick: ctrl.get_onclick(3)
-					}, "chat_bubble_outline"),
+					}, "comment"),
+          // m("i", {
+					// 	class: (ctrl.status()===4?s.selected:"")+s.icon+"material-icons",
+					// 	onclick: ctrl.get_onclick(4)
+					// }, "live_help"),
 				])
 			]);
 		}

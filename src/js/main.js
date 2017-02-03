@@ -58,7 +58,7 @@ var App = {
 					});
 				} else if(ctrl.status()===3) {
 					return m.component(HoverButton,{
-						icon: "send",
+						icon: "check",
 						onclick: ctrl.onfeedback
 					});
 				}
