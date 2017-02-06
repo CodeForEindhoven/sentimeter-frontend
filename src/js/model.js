@@ -1,4 +1,4 @@
-var endpoint = "http://sentimeter.ideeenvijver.nl/api";
+var endpoint = config.api_endpoint;
 
 function xhrConfig(xhr) {
 	xhr.setRequestHeader("Content-Type", "application/json");
