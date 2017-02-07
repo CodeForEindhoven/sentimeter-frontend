@@ -4,7 +4,6 @@ var ValueSelector = (function(){
 		parent: b.cl({
 			"width": "100%",
 			"height": "35px",
-			"background-color": "#FFFFFF",
 			"padding-top": "20px",
 		}),
 		rails: b.cl({
