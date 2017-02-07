@@ -63,10 +63,6 @@ var MenuBar = (function(){
 						class: (ctrl.status()===3?s.selected:"")+s.icon+"material-icons",
 						onclick: ctrl.get_onclick(3)
 					}, "comment"),
-          // m("i", {
-					// 	class: (ctrl.status()===4?s.selected:"")+s.icon+"material-icons",
-					// 	onclick: ctrl.get_onclick(4)
-					// }, "live_help"),
 				])
 			]);
 		}

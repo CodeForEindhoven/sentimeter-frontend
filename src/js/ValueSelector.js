@@ -64,30 +64,36 @@ var ValueSelector = (function(){
 			var rel = m.prop();
 			var ondrag = function(e){
 				var x = e.clientX;
-				if(!x){x = e.changedTouches[0].clientX;}
+				if(!x){
+					if(e.changedTouches){
+						x = e.changedTouches[0].clientX;
+					} else {
+						x = 0;
+					}
+				}
 
 				rel(x - element().parentElement.offsetLeft);
-
 				var p = (rel()/width());
-				if(p<0.1){p=0.1;}
+				if(p<0){p=0;}
 				if(p>1){p=1;}
 				position(p);
 				m.redraw();
 			};
 
 			var onend = function(){
+				console.log("end");
 				if(down()===true){
 					window.removeEventListener('mousemove', ondrag ,false);
 					window.removeEventListener('touchmove', ondrag ,false);
 					down(false);
-					var value = Math.round((rel()/width())*10);
+					var value = Math.round(position()*10);
 					position(value/10);
 					model.score(id, value);
 					m.redraw();
 				}
 			};
 
-			window.addEventListener("mouseup", onend, false);
+			window.addEventListener("mouseup",  onend, false);
 			window.addEventListener("touchend", onend, false);
 
 			return {
@@ -95,8 +101,8 @@ var ValueSelector = (function(){
 				position: position,
 				config: function(e){
 					element(e);
-					width(e.parentElement.offsetWidth);
-					e.setAttribute("style", "margin-left:"+(width()*position()-35)+"px");
+					width(e.parentElement.offsetWidth - e.parentElement.offsetLeft);
+					e.setAttribute("style", "margin-left:"+(width()*position())+"px");
 				},
 				onmousedown: function(e){
 					e.preventDefault();
