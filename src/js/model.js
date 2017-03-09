@@ -14,10 +14,14 @@ function POST(url, data){
 
 var model = {};
 
-model.handshake = m.prop({
-	identity_id: localStorage.getItem("identity_id"),
-	session_id: ""
-});
+model.handshake = m.prop({});
+var identity_id = localStorage.getItem("identity_id");
+if(identity_id){
+	model.handshake({
+		identity_id: identity_id
+	});
+}
+
 
 model.indicators = m.prop([]);
 model.history = m.prop({});
