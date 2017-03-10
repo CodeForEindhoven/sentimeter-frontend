@@ -13,7 +13,7 @@ var Card_Measure = (function(){
 			"text-align": "center"
 		}),
 		img: b.cl({
-			"width": "75px"
+			"width": "150px"
 		})
 	};
 

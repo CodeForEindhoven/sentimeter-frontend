@@ -28,7 +28,7 @@ var Measures = (function(){
 		view: function(ctrl){
 			return m("div", {}, [
 				m("h1", {class: s.title}, (ctrl.mode()===0)?"Mijn Meetlatten":"Ontdek"),
-				m("div", {class: s.searchbutton, onclick: ctrl.switchmode}, m.component(Circle_Icon)),
+				//m("div", {class: s.searchbutton, onclick: ctrl.switchmode}, m.component(Circle_Icon)),
 				m.component(Measures_Mine)
 			]);
 		}
