@@ -40,30 +40,30 @@ var App = {
 			m.component(MenuBar, ctrl.status),
 			m("div",{class: "page"},[
 				(function(){
-					if(ctrl.status()===0){return m.component(MyCards);}
+					if(ctrl.status()===0){return m.component(Measures);}
 					if(ctrl.status()===1){return m.component(Group);}
 					if(ctrl.status()===2){return m.component(AddCards, {value: ctrl.addvalue});}
 					if(ctrl.status()===3){return m.component(Feedback, {value: ctrl.feedbackvalue});}
 				})()
 			]),
-			(function(){
-				if(ctrl.status()<2){
-					return m.component(HoverButton,{
-						icon: "add",
-						onclick: ctrl.onadd
-					});
-				} else if(ctrl.status()===2) {
-					return m.component(HoverButton,{
-						icon: "check",
-						onclick: ctrl.oncreate
-					});
-				} else if(ctrl.status()===3) {
-					return m.component(HoverButton,{
-						icon: "check",
-						onclick: ctrl.onfeedback
-					});
-				}
-			})()
+			//(function(){
+			//	if(ctrl.status()<2){
+			//		return m.component(HoverButton,{
+			//			icon: "add",
+			//			onclick: ctrl.onadd
+			//		});
+			//	} else if(ctrl.status()===2) {
+			//		return m.component(HoverButton,{
+			//			icon: "check",
+			//			onclick: ctrl.oncreate
+			//		});
+			//	} else if(ctrl.status()===3) {
+			//		return m.component(HoverButton,{
+			//			icon: "check",
+			//			onclick: ctrl.onfeedback
+			//		});
+			//	}
+			//})()
 
 		]);
 	}

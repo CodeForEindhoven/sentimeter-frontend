@@ -30,7 +30,7 @@ var ValueSelector = (function(){
 			"text-align": "center",
 			"line-height": "35px",
 			"cursor": "pointer",
-			"touch-callout": "none",                /* prevent callout to copy image, etc when tap to hold */
+			"touch-callout": "none", 
 			"user-select": "none",
 		}),
 		down: b.cl({
