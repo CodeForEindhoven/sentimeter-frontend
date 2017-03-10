@@ -6,32 +6,34 @@ var MenuBar = (function(){
 			"box-sizing": "border-box",
 			"height": "70px",
 			"width": "100%",
-			"top": "0px",
-			"line-height": "70px",
-			"padding-left": "20px",
-			"padding-right": "0px",
+			"bottom": "0px",
+			"padding-top": "10px",
 			"position": "fixed",
 			"z-index": "9000",
 
 			//styling
-			"background-color": "#E32527",
+			"background-color": "#ffffff",
 
-			"color": "#fff",
-			"box-shadow": "0px 1px 5px #AAAAAA",
+			"color": "#000000",
+			"box-shadow": "0px -1px 5px #555555",
+			"text-align": "justify"
 		}),
 		right: b.cl({
-			"float": "right"
+			"width": "100%"
 		}),
 		icon: b.cl({
-			"vertical-align": "middle",
+			"float": "left",
+		//	"vertical-align": "middle",
 			"text-align": "center",
-			"line-height": "64px",
-			"width": "70px",
-			"border-bottom": "4px solid #E32527",
-			"cursor": "pointer"
+			"width": "33%",
+			"cursor": "pointer",
+		}),
+		icontitle: b.cl({
+			"font-size": "14px"
 		}),
 		selected: b.cl({
-			"border-bottom": "4px solid white!important"
+			//"border-bottom": "4px solid white!important"
+			"color": "#ed1d24",
 		})
 	};
 
@@ -49,20 +51,29 @@ var MenuBar = (function(){
 		view: function(ctrl){
 
 			return m("nav", {class: s.parent}, [
-				m("span","Waag"),
 				m("span", {class: s.right}, [
-					m("i", {
-						class: (ctrl.status()===0?s.selected:"")+s.icon+"material-icons",
+					m("div",{
+						class: (ctrl.status()===0?s.selected:"")+s.icon,
 						onclick: ctrl.get_onclick(0)
-					}, "person"),
-					m("i", {
-						class: (ctrl.status()===1?s.selected:"")+s.icon+"material-icons",
+					},[
+						m("i", {class: "material-icons"}, "list"),
+						m("div",{class: s.icontitle},"meetlatten")
+					]),
+					m("div",{
+						class: (ctrl.status()===1?s.selected:"")+s.icon,
 						onclick: ctrl.get_onclick(1)
-					}, "people"),
-					m("i", {
-						class: (ctrl.status()===3?s.selected:"")+s.icon+"material-icons",
+					},[
+						m("i", {class: "material-icons"}, "people"),
+						m("div",{class: s.icontitle},"maatjes")
+					]),
+					m("div",{
+						class: (ctrl.status()===3?s.selected:"")+s.icon,
 						onclick: ctrl.get_onclick(3)
-					}, "comment"),
+					},[
+						m("i", {class: "material-icons"}, "timeline"),
+						m("div",{class: s.icontitle},"voortgang")
+					]),
+
 				])
 			]);
 		}

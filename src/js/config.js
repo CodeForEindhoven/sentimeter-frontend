@@ -1,3 +1,3 @@
 var config = {
-	api_endpoint: "http://sentimeter.ideeenvijver.nl/api"
+	api_endpoint: "http://www.sentimeter.org/api"
 };

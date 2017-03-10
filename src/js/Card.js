@@ -6,10 +6,12 @@ var Card = (function(){
 			"box-sizing": "border-box",
 			"width": "100%",
 			"top": "0px",
-			"padding": "30px",
+			"padding": "20px",
 
-			"box-shadow": "0px 1px 5px #AAAAAA",
-			"border": "0.5px solid #AAAAAA",
+			"box-shadow": "0px 2px 10px #555555",
+			//"border": "0.5px solid #AAAAAA",
+			"background-color": "#FFFFFF",
+
 			"border-radius": "7px",
 			"margin-left": "auto",
 			"margin-right": "auto",
@@ -17,11 +19,11 @@ var Card = (function(){
 			"position": "relative",
 		}),
 		demate: b.cl({
-			"font-size": "24pt",
+			"font-size": "20pt",
 			"font-weight": "700",
 		}),
 		waarin: b.cl({
-			"font-size": "24pt",
+			"font-size": "20pt",
 			"font-weight": "200",
 		}),
 		bookmark: b.cl({
@@ -29,6 +31,10 @@ var Card = (function(){
 			"right": "10px",
 			"top": "10px",
 			"cursor": "pointer"
+		}),
+		illustration: b.cl({
+			"margin-top": "10px",
+			"text-align": "center"
 		})
 	};
 
@@ -54,8 +60,11 @@ var Card = (function(){
 						class: s.bookmark+" material-icons",
 						onclick: ctrl.onclick
 					}, (ctrl.selected())?"bookmark":"bookmark_border"),
-					m("span",{class: s.demate},"De mate waarin "),
-					m("span",{class: s.waarin}, indicator.title),
+					m("div",{class: s.demate},"De mate waarin "),
+					m("div",{class: s.waarin}, indicator.title),
+					m("div", {class: s.illustration},[
+						m("img",{src: "https://d30y9cdsu7xlg0.cloudfront.net/png/102230-200.png"})
+					])
 				])
 			]);
 		}

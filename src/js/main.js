@@ -35,12 +35,13 @@ var App = {
 		};
 	},
 	view: function(ctrl){
+		console.log("render");
 		return m("div",[
 			m.component(MenuBar, ctrl.status),
 			m("div",{class: "page"},[
 				(function(){
 					if(ctrl.status()===0){return m.component(MyCards);}
-					if(ctrl.status()===1){return m.component(AllCards);}
+					if(ctrl.status()===1){return m.component(Group);}
 					if(ctrl.status()===2){return m.component(AddCards, {value: ctrl.addvalue});}
 					if(ctrl.status()===3){return m.component(Feedback, {value: ctrl.feedbackvalue});}
 				})()
@@ -69,3 +70,12 @@ var App = {
 };
 
 m.mount(document.getElementById("app"), App);
+
+POST("/handshake", model.handshake)
+	.then(model.handshake)
+	.then(function(handshake){
+		localStorage.setItem("identity_id", handshake.identity_id);
+		model.get_myindicators();
+	});
+
+GET("/indicators").then(model.indicators);

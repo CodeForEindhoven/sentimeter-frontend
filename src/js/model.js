@@ -78,13 +78,3 @@ model.score = function(id, score){
 		model.get_myindicators();
 	});
 };
-
-POST("/handshake", model.handshake)
-	.then(model.handshake)
-	.then(function(handshake){
-		localStorage.setItem("identity_id", handshake.identity_id);
-		model.get_myindicators();
-	});
-
-GET("/indicators").then(model.indicators);
-//GET("/history/"+model.handshake().identity_id).then(model.history);
