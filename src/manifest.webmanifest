@@ -1,0 +1,11 @@
+{
+	"name": "Waag geluk",
+	"short_name": "Waag",
+	"start_url": ".",
+	"display": "standalone",
+	"background_color": "#76AAAE",
+	"description": "Waag geluk",
+	"related_applications": [{
+		"platform": "web"
+	}]
+}
