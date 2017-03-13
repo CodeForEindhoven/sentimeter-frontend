@@ -4,6 +4,7 @@ var Draggable = (function(){
 
 	return {
 		controller: function(content, callback){
+			var wait = false;
 			var hold = m.prop(false);
 			callback(hold());
 
@@ -12,6 +13,7 @@ var Draggable = (function(){
 			var currentpos = m.prop({x:0,y:0});
 
 			function ondrag(e){
+				e.preventDefault();
 				deltapos({
 					x: e.touches[0].clientX-downpos().x,
 					y: e.touches[0].clientY-downpos().y
@@ -25,17 +27,24 @@ var Draggable = (function(){
 				currentpos: currentpos,
 
 				down: function(e){
-					e.preventDefault();
-					downpos({
-						x: e.touches[0].clientX,
-						y: e.touches[0].clientY
-					});
-					hold(true);
-					callback(hold());
-					window.addEventListener("touchmove", ondrag, false);
+
+					wait = true;
+					window.setTimeout(function(){
+						if(wait){
+							downpos({
+								x: e.touches[0].clientX,
+								y: e.touches[0].clientY
+							});
+							hold(true);
+							callback(hold());
+							document.addEventListener("touchmove", ondrag, false);
+							m.redraw();
+						}
+					},700);
 				},
 				up: function(){
 					hold(false);
+					wait = false;
 					callback(hold());
 					currentpos({
 						x: currentpos().x + deltapos().x,
@@ -45,7 +54,7 @@ var Draggable = (function(){
 						x:0,
 						y:0
 					});
-					window.removeEventListener('touchmove', ondrag ,false);
+					document.removeEventListener('touchmove', ondrag ,false);
 				}
 			};
 		},

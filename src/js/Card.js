@@ -19,10 +19,11 @@ var Card = (function(){
 			"position": "relative",
 
 			"font-size": "20pt",
-			//"transition": "all 0.1s"
+			"transition": "all 0.1s"
 		}),
 		hold: b.cl({
 			"box-shadow": "0px 5px 30px #555555!important",
+			"transform": "translate(0px,-5px) rotate(-1deg)"
 		}),
 	};
 
