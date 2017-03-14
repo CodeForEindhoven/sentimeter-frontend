@@ -2,7 +2,9 @@ var Measures = (function(){
 
 	var s = {
 		title: b.cl({
-			"color": "#ffffff"
+			"color": "#ffffff",
+			"margin-left": "40px",
+			"margin-bottom": "30px"
 		}),
 		searchbutton: b.cl({
 			"position": "absolute",

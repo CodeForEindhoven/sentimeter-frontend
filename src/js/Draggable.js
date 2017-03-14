@@ -12,8 +12,11 @@ var Draggable = (function(){
 			var deltapos = m.prop({x:0,y:0});
 			var currentpos = m.prop({x:0,y:0});
 
+			var scrollpos = m.prop(0);
+
 			function ondrag(e){
-				e.preventDefault();
+				//e.preventDefault();
+				window.scrollTo(0, scrollpos());
 				deltapos({
 					x: e.touches[0].clientX-downpos().x,
 					y: e.touches[0].clientY-downpos().y
@@ -31,6 +34,7 @@ var Draggable = (function(){
 					wait = true;
 					window.setTimeout(function(){
 						if(wait){
+							scrollpos(window.pageYOffset || document.documentElement.scrollTop);
 							downpos({
 								x: e.touches[0].clientX,
 								y: e.touches[0].clientY

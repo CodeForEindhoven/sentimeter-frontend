@@ -1,6 +1,9 @@
 var Card_Measure = (function(){
 
 	var s ={
+		parent: b.cl({
+			"background-color": "inherit"
+		}),
 		demate: b.cl({
 			"font-weight": "700",
 		}),
@@ -14,6 +17,11 @@ var Card_Measure = (function(){
 		}),
 		img: b.cl({
 			"width": "150px"
+		}),
+		remove: b.cl({
+			"position": "absolute",
+			"top": "30px",
+			"right": "20px"
 		})
 	};
 
@@ -24,22 +32,26 @@ var Card_Measure = (function(){
 			//		function(c){
 			//			return indicator.id === c;
 			//		}) !== undefined);
-			//return {
+			return {
+				remove: function(){
+					model.unselect_card(indicator);
+				}
 			//	selected: selected,
 			//	onclick: function(){
 			//		selected(true);
 			//		model.select_card(indicator);
 			//	}
-			//};
+			};
 		},
 		view: function(ctrl, indicator, interaction){
 			return m.component(Card, [
-				m("div",[
+				m("div",{class: s.parent},[
 					m("div",{class: s.demate},"De mate waarin "),
 					m("div",{class: s.waarin}, indicator.title),
 					m("div", {class: s.illustration},[
 						m("img", {class: s.img, src: "https://d30y9cdsu7xlg0.cloudfront.net/png/102230-200.png"})
 					]),
+					m("img", {src:"/icons/remove.png", class: s.remove, onclick: ctrl.remove} ),
 					interaction
 				])
 			]);

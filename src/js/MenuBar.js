@@ -56,22 +56,23 @@ var MenuBar = (function(){
 						class: (ctrl.status()===0?s.selected:"")+s.icon,
 						onclick: ctrl.get_onclick(0)
 					},[
-						m("i", {class: "material-icons"}, "list"),
-						m("div",{class: s.icontitle},"meetlatten")
+						//m("i", {class: "material-icons"}, "list"),
+						m("img",{src: "/icons/meetlatten.png"}),
+						m("div",{class: s.icontitle},"mijn meetlatten")
 					]),
 					m("div",{
 						class: (ctrl.status()===1?s.selected:"")+s.icon,
 						onclick: ctrl.get_onclick(1)
 					},[
 						m("i", {class: "material-icons"}, "people"),
-						m("div",{class: s.icontitle},"maatjes")
+						m("div",{class: s.icontitle},"ontdekken")
 					]),
 					m("div",{
 						class: (ctrl.status()===3?s.selected:"")+s.icon,
 						onclick: ctrl.get_onclick(3)
 					},[
 						m("i", {class: "material-icons"}, "timeline"),
-						m("div",{class: s.icontitle},"voortgang")
+						m("div",{class: s.icontitle},"maatjes")
 					]),
 
 				])
