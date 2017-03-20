@@ -68,6 +68,12 @@ model.get_myindicators = function(){
 	});
 };
 
+model.selected = function(indicator){
+	return model.my_cards().find(function(id){
+		return indicator.id === id;
+	}) !== undefined;
+};
+
 
 model.score = function(id, score){
 	POST("/score", {

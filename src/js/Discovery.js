@@ -1,4 +1,4 @@
-var Measures = (function(){
+var Discovery = (function(){
 
 	var s = {
 		title: b.cl({
@@ -17,9 +17,9 @@ var Measures = (function(){
 		controller: function(){},
 		view: function(ctrl){
 			return m("div", {}, [
-				m("h1", {class: s.title}, "Mijn Meetlatten"),
+				m("h1", {class: s.title}, "Ontdekken"),
 				//m("div", {class: s.searchbutton, onclick: ctrl.switchmode}, m.component(Circle_Icon)),
-				m.component(Measures_Mine)
+				m.component(Measures_Discovery)
 			]);
 		}
 	};

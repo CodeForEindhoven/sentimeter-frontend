@@ -41,8 +41,8 @@ var App = {
 			m("div",{class: "page"},[
 				(function(){
 					if(ctrl.status()===0){return m.component(Measures);}
-					if(ctrl.status()===1){return m.component(Group);}
-					if(ctrl.status()===2){return m.component(AddCards, {value: ctrl.addvalue});}
+					if(ctrl.status()===1){return m.component(Discovery);}
+					if(ctrl.status()===2){return m.component(Group, {value: ctrl.addvalue});}
 					if(ctrl.status()===3){return m.component(Feedback, {value: ctrl.feedbackvalue});}
 				})()
 			]),

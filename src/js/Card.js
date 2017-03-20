@@ -13,6 +13,8 @@ var Card = (function(){
 			"background-color": "#65b16f",
 			"color": "#FFFFFF",
 
+			"border-bottom": "0.1px solid #FFFFFF",
+
 			//"border-radius": "7px",
 			"margin-left": "auto",
 			"margin-right": "auto",
